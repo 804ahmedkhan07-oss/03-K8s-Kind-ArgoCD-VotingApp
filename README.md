@@ -7,11 +7,11 @@ The infrastructure is provisioned using **Terraform**, and the application lifec
 ## 📸 Project Screenshots
 
 ### The Voting App (Cats vs Dogs)
-![Cats vs Dogs App](link-to-your-cat-dog-image.jpg)
+![Cats vs Dogs App](https://github.com/804ahmedkhan07-oss/03-K8s-Kind-ArgoCD-VotingApp/blob/main/catvsdog.jpg)
 *Users can vote for their favorite pet, and the results are processed in real-time.*
 
 ### ArgoCD UI (Live Sync)
-![ArgoCD UI](link-to-your-argocd-image.jpg)
+![ArgoCD UI](https://github.com/804ahmedkhan07-oss/03-K8s-Kind-ArgoCD-VotingApp/blob/main/ArgoCd.jpg)
 *ArgoCD automatically syncing the K8s manifests from GitHub to the cluster.*
 
 ---
