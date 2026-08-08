@@ -1,117 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Project Commands</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0d1117; /* GitHub Dark background */
-            color: #c9d1d9; /* GitHub Light text */
-            margin: 0;
-            padding: 40px;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-        }
-        h1 {
-            color: #58a6ff;
-            text-align: center;
-            border-bottom: 2px solid #30363d;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        h2 {
-            color: #3fb950;
-            margin-top: 30px;
-            font-size: 1.5em;
-        }
-        p {
-            color: #8b949e;
-            margin-bottom: 15px;
-        }
-        .card {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        pre {
-            background-color: #010409;
-            padding: 15px;
-            border-radius: 6px;
-            overflow-x: auto;
-            border-left: 4px solid #58a6ff;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 14px;
-            color: #e6edf3;
-            line-height: 1.5;
-        }
-        .comment {
-            color: #8b949e;
-            font-style: italic;
-        }
-        .command {
-            color: #79c0ff;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
+#!/bin/bash
 
-    <div class="container">
-        <h1>🚀 DevOps Commands Reference</h1>
+# =======================================================
+# 🚀 DevOps Commands Reference
+# Note: Copy and run individual commands as needed.
+# =======================================================
 
-        <div class="card">
-            <h2>🌍 1. Terraform (Infrastructure as Code)</h2>
-            <p>Core commands to provision and manage infrastructure on AWS:</p>
-            <pre>
-<span class="comment"># Initialize the working directory (Downloads required plugins/providers)</span>
-<span class="command">terraform init</span>
+# 🌍 1. TERRAFORM (Infrastructure as Code)
+# -------------------------------------------------------
+# Initialize the working directory (Downloads plugins)
+terraform init
 
-<span class="comment"># Preview changes (Shows exactly what resources will be created/modified)</span>
-<span class="command">terraform plan</span>
+# Preview changes (Shows what will be created)
+terraform plan
 
-<span class="comment"># Deploy infrastructure (Provisions the resources on AWS)</span>
-<span class="command">terraform apply -auto-approve</span>
+# Deploy infrastructure (Provisions resources on AWS)
+terraform apply -auto-approve
 
-<span class="comment"># Delete infrastructure (Destroys all provisioned resources to avoid costs)</span>
-<span class="command">terraform destroy -auto-approve</span></pre>
-        </div>
+# Delete infrastructure (Destroys all resources)
+terraform destroy -auto-approve
 
-        <div class="card">
-            <h2>⚙️ 2. ArgoCD (GitOps Deployment)</h2>
-            <p>Commands to manage declarative GitOps pipelines and sync applications:</p>
-            <pre>
-<span class="comment"># Deploy the Master/Root Application (App-of-Apps pattern)</span>
-<span class="command">kubectl apply -f root-app/root-application.yaml -n argocd</span>
 
-<span class="comment"># Check the sync and health status of all ArgoCD applications</span>
-<span class="command">argocd app list</span>
+# ⚙️ 2. ARGOCD (GitOps Deployment)
+# -------------------------------------------------------
+# Deploy the Master/Root Application (App-of-Apps pattern)
+kubectl apply -f root-app/root-application.yaml -n argocd
 
-<span class="comment"># Force a manual sync (Useful if GitHub webhooks are not yet configured)</span>
-<span class="command">argocd app sync root-master-application</span></pre>
-        </div>
+# Check the sync and health status of all ArgoCD apps
+argocd app list
 
-        <div class="card">
-            <h2>🔍 3. Kubernetes & Debugging</h2>
-            <p>Essential commands to troubleshoot errors and inspect cluster resources:</p>
-            <pre>
-<span class="comment"># List all pods in a specific namespace</span>
-<span class="command">kubectl get pods -n &lt;namespace&gt;</span>
+# Force a manual sync (If webhooks are not configured)
+argocd app sync root-master-application
 
-<span class="comment"># Fetch the logs of a specific pod to identify application errors</span>
-<span class="command">kubectl logs &lt;pod-name&gt; -n &lt;namespace&gt;</span>
 
-<span class="comment"># Inspect detailed pod events (Crucial for diagnosing CrashLoopBackOff or OOMKilled)</span>
-<span class="command">kubectl describe pod &lt;pod-name&gt; -n &lt;namespace&gt;</span></pre>
-        </div>
-    </div>
+# 🔍 3. KUBERNETES & DEBUGGING
+# -------------------------------------------------------
+# List all pods in a specific namespace
+kubectl get pods -n <namespace>
 
-</body>
-</html>
+# Fetch the logs of a specific pod
+kubectl logs <pod-name> -n <namespace>
+
+# Inspect detailed pod events (For CrashLoopBackOff etc.)
+kubectl describe pod <pod-name> -n <namespace>
+    
